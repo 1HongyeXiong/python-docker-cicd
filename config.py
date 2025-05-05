@@ -1,6 +1,7 @@
 import os
 
 from typing import Any
+from typing import Optional
 
 from pydantic import (
     PostgresDsn,
@@ -16,8 +17,10 @@ class Settings(BaseSettings):
     POSTGRES_SERVER: str
     POSTGRES_PORT: int = 5432
     POSTGRES_USER: str
-    POSTGRES_PASSWORD: str | None = None
-    POSTGRES_PASSWORD_FILE: str | None = None
+    
+    POSTGRES_PASSWORD: Optional[str] = None
+
+    POSTGRES_PASSWORD_FILE: Optional[str] = None
     POSTGRES_DB: str
 
     @model_validator(mode="before")
